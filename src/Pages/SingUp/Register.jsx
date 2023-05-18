@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import reader from "../../assets/readerSungUp.json";
 import Lottie from "lottie-react";
 import { AuthContext } from "../../Providers/AuthProvider";
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
+
   const { createUser, updateUserProfile, setReload } = useContext(AuthContext);
   const handleSingUp = (event) => {
     event.preventDefault();
@@ -13,11 +17,12 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoURL, email, password);
+    console.log(displayName, photoURL, email, password);
 
     createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        navigate(from, { replace: true });
         if (loggedUser) {
           updateUserProfile({
             displayName,

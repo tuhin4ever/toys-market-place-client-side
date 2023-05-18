@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import reader from "../../assets/render.json";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
@@ -6,6 +6,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || "/";
+
+
+
   const { singIn } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
@@ -18,6 +24,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         // console.log(loggedUser);
+        navigate(from, { replace: true });
         Swal.fire({
           title: "Welcome To Play Go !",
           text: `${loggedUser.displayName} ✨`,

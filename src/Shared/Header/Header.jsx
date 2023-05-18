@@ -13,7 +13,7 @@ const Header = () => {
         Swal.fire({
           title: "Sign out successfully",
           html: "See you again! I will close in <b></b> milliseconds.",
-          timer: 3000,
+          timer: 2000,
           timerProgressBar: true,
           didOpen: () => {
             Swal.showLoading();
