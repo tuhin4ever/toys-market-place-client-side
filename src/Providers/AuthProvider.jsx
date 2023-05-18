@@ -4,8 +4,14 @@ export const AuthContext = createContext(null)
 
 
 const AuthProvider = ({children}) => {
-    const user = true
+    const user = {
+        
+        displayName: 'Sakib',
+        email: 'tuhin4ever19@gmail.com',
+        photoURL: 'https://i.ibb.co/HphgsmS/pexels-kha-ruxury-860538.jpg'
 
+    }
+    // const user = false
 
     const authInfo = {
         user

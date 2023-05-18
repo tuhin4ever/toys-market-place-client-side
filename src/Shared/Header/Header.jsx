@@ -1,92 +1,139 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaEquals, FaRegTimesCircle } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { MdOutlineToys } from "react-icons/md";
 
 const Header = () => {
-  const [open, setOpen] = useState(false);
   const { user } = useContext(AuthContext);
-  return (
-    <div className="w-9/12 mx-auto mt-5 flex justify-between items-center">
-      <h2 className="text-3xl font-bold text-orange-500">Chef Finder</h2>
 
-      <div onClick={() => setOpen(!open)} className="text-sky-500 md:hidden">
-        <span>
-          {open == false ? (
-            <FaEquals className="text-orange-500"></FaEquals>
-          ) : (
-            <FaRegTimesCircle className="text-orange-500"></FaRegTimesCircle>
-          )}
-        </span>
-      </div>
-
-      <nav
-        className={`flex flex-col md:flex-row justify-center items-center gap-4 absolute md:static duration-1000 rounded-md ${
-          open ? "top-20 right-6" : "-top-56 right-6"
-        } z-10`}
-      >
+  const navItems = (
+    <>
+      <li>
         <NavLink
-          className={({ isActive }) => (isActive ? "active-link" : "link")}
           to="/"
+          className={({ isActive }) => (isActive ? "active" : "default")}
         >
           Home
         </NavLink>
+      </li>
+      <li>
         <NavLink
-          to="/AllToys"
-          className={({ isActive }) => (isActive ? "active-link" : "link")}
+          to="/all-toys"
+          className={({ isActive }) => (isActive ? "active" : "default")}
         >
-           All Toys
+          All Toys
         </NavLink>
-        <NavLink
-          to="/myToys"
-          className={({ isActive }) => (isActive ? "active-link" : "link")}
-        >
-           My Toys
-        </NavLink>
-        <NavLink
-          to="/addToy"
-          className={({ isActive }) => (isActive ? "active-link" : "link")}
-        >
-            Add A Toy
-        </NavLink>
+      </li>
+      <li>
         <NavLink
           to="/blog"
-          className={({ isActive }) => (isActive ? "active-link" : "link")}
+          className={({ isActive }) => (isActive ? "active" : "default")}
         >
           Blog
         </NavLink>
-        {user && (
-          <div
-            className="avatar tooltip tooltip-bottom tooltip-primary"
-            data-tip={user.displayName}
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/my-toys"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              My Toys
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/add-toy"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              Add A Toy
+            </NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
+  return (
+    <div className="navbar h-16 ">
+      <div className="navbar-start md:ml-16">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow-lg
+               bg-base-100 rounded-box w-52"
           >
-            <div className="w-9 rounded-full  ring-1 ring-primary">
-              <img src={user.photoURL} />
+            {navItems}
+          </ul>
+        </div>
+        <Link to="/">
+          <h2 className="md:text-3xl font-bold text-primary flex items-center gap-2">
+            <MdOutlineToys className="" /> Play Go
+          </h2>
+        </Link>
+      </div>
+      <div className="navbar-center hidden lg:flex">
+        <ul className="items-center hidden space-x-8 lg:flex">{navItems}</ul>
+      </div>
+      <div className="navbar-end md:mr-16">
+        <li className="flex items-center gap-5">
+          {user ? (
+            <div
+              className="avatar tooltip tooltip-bottom tooltip-primary"
+              data-tip={user.displayName}
+            >
+              <div className="w-9 rounded-full ring ring-primary   ">
+                <img src={user.photoURL} />
+              </div>
             </div>
-          </div>
-        )}
-        {!user ? (
-          <Link to="/login">
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 "
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : "default")}
             >
-              Login
-            </button>
-          </Link>
-        ) : (
-          <Link >
-            <button
-              type="button"
-              className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
+              <button className="btn btn-xs btn-outline">Sing Up</button>
+            </NavLink>
+          )}
+
+          {user ? (
+            <button className="btn btn-xs btn-outline">Sing Out</button>
+          ) : (
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "active" : "default")}
             >
-              Logout
-            </button>
-          </Link>
-        )}
-      </nav>
+              <button className="btn btn-xs btn-outline">Sing In</button>
+            </NavLink>
+          )}
+        </li>
+      </div>
     </div>
   );
 };
 
 export default Header;
+{
+  /* <button onClick={handleLogOut} className="btn glass">
+              Logout
+            </button> */
+}
+{
+  /*
+   */
+}

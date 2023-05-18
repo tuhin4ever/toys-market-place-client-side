@@ -2,7 +2,7 @@ import React from "react";
 
 const Blog = () => {
   return (
-    <div className="my-3 w-9/12 mx-auto mt-5">
+    <div className="my-3 w-9/12 mx-auto mt-24">
       <div className="border border-base-300 p-3 bg-base-100 rounded-box m-2">
         <div className="text-xl font-medium">
           Tell us the differences between uncontrolled and controlled
