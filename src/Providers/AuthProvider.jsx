@@ -10,14 +10,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
- 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [reload, setReload] = useState(null);
 
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
@@ -45,14 +46,24 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
     });
+    if (reload) {
+        Swal.fire({
+            title: "Welcome To Play Go !",
+            text: `${user.displayName} ✨`,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+    }
     return () => unsubscribe();
-  }, []);
+  }, [reload]);
 
   const authInfo = {
     user,
     loading,
     createUser,
     updateUserProfile,
+    setReload,
     singInWithGoogle,
     logOut,
   };

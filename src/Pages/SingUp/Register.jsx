@@ -1,24 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import { Link } from "react-router-dom";
-import reader from "../../assets/readerSungUp.json"
+import reader from "../../assets/readerSungUp.json";
 import Lottie from "lottie-react";
+import { AuthContext } from "../../Providers/AuthProvider";
 const Register = () => {
+  const { createUser, updateUserProfile, setReload } = useContext(AuthContext);
   const handleSingUp = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
+    const displayName = form.name.value;
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        if (loggedUser) {
+          updateUserProfile({
+            displayName,
+            photoURL,
+          }).then(() => {
+            setReload(new Date().getTime());
+          });
+          form.reset();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row ">
         <div className="mr-12  w-1/2">
-            <Lottie animationData={reader} loop={true} />
+          <Lottie animationData={reader} loop={true} />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">

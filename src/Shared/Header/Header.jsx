@@ -9,19 +9,33 @@ const Header = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
+        let timerInterval;
         Swal.fire({
           title: "Sign out successfully",
-          text: "See you again!",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 2000, // Adjust the duration of the success message here (in milliseconds)
-        })
+          html: "See you again! I will close in <b></b> milliseconds.",
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const b = Swal.getHtmlContainer().querySelector("b");
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft();
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            console.log("I was closed by the timer");
+          }
+        });
       })
       .catch((error) => {
         console.log("error", error);
       });
   };
-
 
   const navItems = (
     <>
@@ -126,7 +140,9 @@ const Header = () => {
           )}
 
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-xs btn-outline">Sing Out</button>
+            <button onClick={handleLogOut} className="btn btn-xs btn-outline">
+              Sing Out
+            </button>
           ) : (
             <NavLink to="/login">
               <button className="btn btn-xs btn-outline">Sing In</button>
