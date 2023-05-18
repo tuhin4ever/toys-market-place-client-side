@@ -103,10 +103,7 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
+            <NavLink to="/register">
               <button className="btn btn-xs btn-outline">Sing Up</button>
             </NavLink>
           )}
@@ -114,10 +111,7 @@ const Header = () => {
           {user ? (
             <button className="btn btn-xs btn-outline">Sing Out</button>
           ) : (
-            <NavLink
-              to="/login"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
+            <NavLink to="/login">
               <button className="btn btn-xs btn-outline">Sing In</button>
             </NavLink>
           )}
