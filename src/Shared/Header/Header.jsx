@@ -2,9 +2,26 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { MdOutlineToys } from "react-icons/md";
-
+import Swal from "sweetalert2";
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Sign out successfully",
+          text: "See you again!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000, // Adjust the duration of the success message here (in milliseconds)
+        })
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
 
   const navItems = (
     <>
@@ -98,7 +115,7 @@ const Header = () => {
               className="avatar tooltip tooltip-bottom tooltip-primary"
               data-tip={user.displayName}
             >
-              <div className="w-9 rounded-full ring ring-primary   ">
+              <div className="w-9 rounded-full ring ring-primary">
                 <img src={user.photoURL} />
               </div>
             </div>
@@ -109,7 +126,7 @@ const Header = () => {
           )}
 
           {user ? (
-            <button className="btn btn-xs btn-outline">Sing Out</button>
+            <button onClick={handleLogOut} className="btn btn-xs btn-outline">Sing Out</button>
           ) : (
             <NavLink to="/login">
               <button className="btn btn-xs btn-outline">Sing In</button>
