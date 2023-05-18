@@ -2,13 +2,35 @@ import { Link } from "react-router-dom";
 import reader from "../../assets/render.json";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 const Login = () => {
+  const { singIn } = useContext(AuthContext);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    singIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+        Swal.fire({
+          title: "Welcome To Play Go !",
+          text: `${loggedUser.displayName} ✨`,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.code);
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">

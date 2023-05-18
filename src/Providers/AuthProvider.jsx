@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -27,6 +28,11 @@ const AuthProvider = ({ children }) => {
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const singIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const singInWithGoogle = () => {
@@ -62,6 +68,7 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     createUser,
+    singIn,
     updateUserProfile,
     setReload,
     singInWithGoogle,
