@@ -28,9 +28,9 @@ const GallerySection = () => {
     ? images.slice(0, totalPhotoCount)
     : images.slice(0, defaultPhotoCount);
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //   window.scrollTo(0, 0);
+    // }, []);
   return (
     <section className=" bg-gray-100">
       <div className="my-container mx-auto">
