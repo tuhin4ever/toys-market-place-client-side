@@ -35,7 +35,7 @@ const Footer = () => {
           <a className="cursor-pointer hover:text-primary">Cookie policy</a>
         </div>
       </footer>
-      <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+      <footer className="footer footer-center p-5 bg-base-200 text-base-content rounded">
         <div className="form-control w-80">
           <div className="relative">
             <input
@@ -43,7 +43,7 @@ const Footer = () => {
               placeholder="Enter your email"
               className="input input-bordered w-full pr-16"
             />
-            <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
+            <button className="btn bg-red-600 hover:bg-red-700  text-white font-bold absolute top-0 right-0 rounded-l-none">
               Subscribe
             </button>
           </div>

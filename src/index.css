@@ -2,22 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .active-link {
-  color: #570df8;
-  text-decoration: none;
-  font-size: 1.25rem;
-}
-.link {
-  color: #000000;
-  text-decoration: none;
-  font-size: 1.25rem;
-} */
+
 .active {
   @apply font-medium tracking-wide text-warning transition-colors duration-200 hover:text-success;
 }
-/* .my-btn {
-    @apply btn glass text-orange-500 hover:bg-orange-500 hover:text-white transition duration-300 ease-in-out;
-  } */
+.my-btn {
+    @apply btn glass text-secondary hover:bg-primary btn-sm hover:text-white transition duration-300 ease-in-out;
+  }
 .default {
   @apply font-medium tracking-wide text-black transition-colors duration-200 hover:text-primary;
 }

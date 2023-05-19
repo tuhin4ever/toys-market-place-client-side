@@ -20,7 +20,7 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn btn-success btn-outline mr-5">
+              <button className="btn my-btn mr-5">
                 Discover All Toy's
               </button>
             </div>
