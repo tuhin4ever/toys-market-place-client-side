@@ -26,7 +26,7 @@ const Login = () => {
         // console.log(loggedUser);
         navigate(from, { replace: true });
         Swal.fire({
-          title: "Welcome To Play Go !",
+          title: "Welcome To Play Go",
           text: `${loggedUser.displayName} ✨`,
           icon: "success",
           showConfirmButton: false,

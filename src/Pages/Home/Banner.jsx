@@ -20,9 +20,7 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn my-btn mr-5">
-                Discover All Toy's
-              </button>
+              <button className="btn my-btn mr-5">Discover Toy's</button>
             </div>
           </div>
         </div>
@@ -59,9 +57,7 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn btn-success btn-outline mr-5">
-                Discover All Toy's
-              </button>
+              <button className="btn my-btn mr-5">Discover Toy's</button>
             </div>
           </div>
         </div>
@@ -96,9 +92,7 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn btn-success btn-outline mr-5">
-                Discover All Toy's
-              </button>
+              <button className="btn my-btn mr-5">Discover Toy's</button>
             </div>
           </div>
         </div>
@@ -135,9 +129,7 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn btn-success btn-outline mr-5">
-                Discover All Toy's
-              </button>
+              <button className="btn my-btn mr-5">Discover Toy's</button>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AOS from "aos";
+import "aos/dist/aos.css";
 import Swal from "sweetalert2";
 const AboutUs = () => {
   const [name, setName] = useState("");
@@ -32,12 +33,7 @@ const AboutUs = () => {
           <hr className="w-48 h-1 mx-auto border-0 rounded mt-3 mb-8 bg-primary" />
           <div className="hero-content flex-col lg:flex-row">
             <div className="lg:w-1/2 space-y-5 p-4 ">
-              <div
-                data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine"
-                className="text-center"
-              >
+              <div data-aos="fade-right" className="text-center">
                 <h1 className="text-5xl font-bold">
                   We Bring Years of Experience and Expertise to the Toy
                   Marketplace

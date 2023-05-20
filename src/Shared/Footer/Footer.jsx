@@ -48,12 +48,7 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="grid grid-flow-col gap-4">
-          <a className="cursor-pointer hover:text-primary">About us</a>
-          <a className="cursor-pointer hover:text-primary">Contact</a>
-          <a className="cursor-pointer hover:text-primary">All Toys</a>
-          <a className="cursor-pointer hover:text-primary">Blog</a>
-        </div>
+        
         <div>
           <div className="grid grid-flow-col gap-4">
             <a className="text-blue-700">

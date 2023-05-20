@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     });
     if (reload) {
         Swal.fire({
-            title: "Welcome To Play Go !",
+            title: "Welcome To Play Go",
             text: `${user.displayName} ✨`,
             icon: "success",
             showConfirmButton: false,

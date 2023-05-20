@@ -26,21 +26,21 @@ const ToysCard = ({ toy }) => {
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold ">{name}</h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-             Years of experience
+             
           </p>
           <p className="flex items-center gap-2 mb-3 font-normal text-gray-700 dark:text-gray-400">
-             Recipes
+             
           </p>
           <p className="flex items-center gap-2 mb-3 font-normal text-gray-700 dark:text-gray-400">
             
           </p>
           <div className="flex justify-between">
            
-              <button className="my-btn">View Recipes</button>
+              <button className="my-btn">View details</button>
            
             <div className="flex gap-2 items-center">
              
-              <span className="text-gray-700">s</span>
+              <span className="text-gray-700">$ {price}</span>
             </div>
           </div>
         </div>
