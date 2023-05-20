@@ -14,7 +14,7 @@ const AddToys = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5000/post-toy", {
+      const response = await fetch("http://localhost:5000/toys", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -22,7 +22,7 @@ const AddToys = () => {
       const result = await response.json();
 
       if (result.insertedId) {
-        notify();
+        alert("Successfully Added");
       }
 
       console.log(result);
@@ -61,11 +61,11 @@ const AddToys = () => {
           required
           className="p-3 m-1 border-2 w-2/6 rounded-lg"
           placeholder="Picture URL"
-          {...register("url")}
+          {...register("picture_url")}
           defaultValue="https://i.ibb.co/VSPjdMc/red-racer.jpg"
         />
         <div className="text-center">
-          <select
+          {/* <select
             required
             className="p-3 m-1 border-2 w-1/2 rounded-lg"
             {...register("category")}
@@ -75,14 +75,14 @@ const AddToys = () => {
             </option>
             <option value="Boys">Boys</option>
             <option value="Girls">Girls</option>
-          </select>
+          </select> */}
           <select
             required
             className="p-3 m-1 border-2 w-1/2 rounded-lg"
-            {...register("subCategory")}
+            {...register("category")}
           >
             <option disabled value="">
-              Subcategory
+            Category
             </option>
             <option value="Toy-Cars">Toy-Cars</option>
             <option value="Action-Figures">Action-Figures</option>
