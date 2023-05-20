@@ -65,17 +65,7 @@ const AddToys = () => {
           defaultValue="https://i.ibb.co/VSPjdMc/red-racer.jpg"
         />
         <div className="text-center">
-          <select
-            required
-            className="p-3 m-1 border-2 w-1/2 rounded-lg"
-            {...register("category")}
-          >
-            <option disabled value="">
-              Category
-            </option>
-            <option value="Boys">Boys</option>
-            <option value="Girls">Girls</option>
-          </select>
+          
           <select
             required
             className="p-3 m-1 border-2 w-1/2 rounded-lg"
