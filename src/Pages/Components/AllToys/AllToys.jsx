@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import PrivateRoute from "../../../Routers/PrivateRoute";
+import { Link } from "react-router-dom";
+
+const Spinner = () => {
+  return (
+    <div className="flex justify-center items-center h-64">
+      <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
+    </div>
+  );
+};
 
 const AllToys = () => {
   AOS.init();
@@ -10,14 +19,17 @@ const AllToys = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(12);
   const [showDefault, setShowDefault] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (showDefault) {
       // Fetch default toys
+      setLoading(true);
       fetch("http://localhost:5000/toys")
         .then((response) => response.json())
         .then((data) => {
           setToys(data);
+          setLoading(false);
         });
     }
   }, [showDefault]);
@@ -37,12 +49,14 @@ const AllToys = () => {
       return;
     }
 
+    setLoading(true);
     fetch(`http://localhost:5000/toys?searchTerm=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
         setToys(data);
         setShowDefault(false);
         setCurrentPage(1);
+        setLoading(false);
       });
   };
 
@@ -66,7 +80,7 @@ const AllToys = () => {
               viewBox="0 0 512 512"
               className="w-4 h-4 text-gray-900"
             >
-              {/* SVG path code */}
+               <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
             </svg>
           </span>
           <input
@@ -81,92 +95,96 @@ const AllToys = () => {
       </div>
 
       <div className="container mx-auto">
-        <table className="table-auto w-full">
-          <thead>
-            <tr>
-              <th className="px-4 py-2">Image</th>
-              <th className="px-4 py-2">Seller</th>
-              <th className="px-4 py-2">Toy Name</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Available Quantity</th>
-              <th className="px-4 py-2">Category</th>
-              <th className="px-4 py-2">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {showDefault ? (
-              currentToys.map((toy) => (
-                <tr key={toy._id}>
-                  <td className="border py-2">
-                    <img
-                      src={toy.picture_url}
-                      alt={toy.name}
-                      className="w-24 rounded-xl mx-auto h-16 object-cover"
-                    />
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.postedBy}
-                  </td>
-                  <td className="border px-4 py-2 text-center">{toy.name}</td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.price} $
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.quantity}
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.category}
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    <label htmlFor="my-modal-6" className="my-btn">
-                      View »
-                    </label>
-                  </td>
-                </tr>
-              ))
-            ) : toys.length === 0 ? (
+        {loading ? (
+          <Spinner />
+        ) : (
+          <table className="table-auto w-full">
+            <thead>
               <tr>
-                <td
-                  className=" px-4 py-10 text-center text-primary font-bold"
-                  colSpan="7"
-                >
-                  No toys found for the search term....🔎
-                </td>
+                <th className="px-4 py-2">Image</th>
+                <th className="px-4 py-2">Seller</th>
+                <th className="px-4 py-2">Toy Name</th>
+                <th className="px-4 py-2">Price</th>
+                <th className="px-4 py-2">Available Quantity</th>
+                <th className="px-4 py-2">Category</th>
+                <th className="px-4 py-2">Details</th>
               </tr>
-            ) : (
-              currentToys.map((toy) => (
-                <tr key={toy._id}>
-                  <td className="border px-4 py-2">
-                    <img
-                      src={toy.picture_url}
-                      alt={toy.name}
-                      className="w-24 rounded-xl mx-auto h-16 object-cover"
-                    />
-                  </td>
-                  <td className="border px-4 py-2">{toy.name}</td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.postedBy}
-                  </td>
-
-                  <td className="border px-4 py-2 text-center">
-                    {toy.price} $
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.quantity}
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    {toy.quantity}
-                  </td>
-                  <td className="border px-4 py-2 text-center">
-                    <label htmlFor="my-modal-6" className="my-btn">
-                      View »
-                    </label>
+            </thead>
+            <tbody>
+              {showDefault ? (
+                currentToys.map((toy) => (
+                  <tr key={toy._id}>
+                    <td className="border py-2">
+                      <img
+                        src={toy.picture_url}
+                        alt={toy.name}
+                        className="w-24 rounded-xl mx-auto h-16 object-cover"
+                      />
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.postedBy}
+                    </td>
+                    <td className="border px-4 py-2 text-center">{toy.name}</td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.price} $
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.quantity}
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.category}
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      <Link to={`/toys/${toy._id}`} className="my-btn">
+                        View »
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              ) : toys.length === 0 ? (
+                <tr>
+                  <td
+                    className="px-4 py-10 text-center text-primary font-bold"
+                    colSpan="7"
+                  >
+                    No toys found for the search term....🔎
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                currentToys.map((toy) => (
+                  <tr key={toy._id}>
+                    <td className="border px-4 py-2">
+                      <img
+                        src={toy.picture_url}
+                        alt={toy.name}
+                        className="w-24 rounded-xl mx-auto h-16 object-cover"
+                      />
+                    </td>
+                    <td className="border px-4 py-2">{toy.name}</td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.postedBy}
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.price} $
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.quantity}
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      {toy.quantity}
+                    </td>
+                    <td className="border px-4 py-2 text-center">
+                      <Link to={`/toys/${toy._id}`} className="my-btn">
+                        View »
+                      </Link>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        )}
+
         {/* Pagination */}
         {toys.length > perPage && (
           <div className="flex justify-center mt-4 mb-5">
@@ -202,52 +220,6 @@ const AllToys = () => {
           </div>
         )}
       </div>
-      {/* The button to open modal */}
-
-      {/* Put this part before </body> tag */}
-      <PrivateRoute>
-        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <label
-              htmlFor="my-modal-6"
-              className="btn btn-ghost btn-square modal-close absolute top-2 right-2"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </label>
-            <h3 className="font-bold text-lg">
-              Congratulations random Internet user!
-            </h3>
-            <img
-              src={toys.picture_url}
-              alt="Image"
-              className="my-modal-image"
-            />
-            <p className="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
-            <div className="modal-action">
-              <label htmlFor="my-modal-6" className="btn">
-                Yay!
-              </label>
-            </div>
-          </div>
-        </div>
-      </PrivateRoute>
     </>
   );
 };

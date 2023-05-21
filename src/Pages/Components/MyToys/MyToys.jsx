@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useEffect, useState } from "react";
-
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -45,8 +45,6 @@ const MyToys = () => {
     });
   };
 
-
-
   const handleSortByPrice = async (sortOrder) => {
     try {
       const response = await fetch(
@@ -66,13 +64,12 @@ const MyToys = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Sub Category</th>
-              <th>
+              <th className="text-center">#</th>
+              <th className="text-center">Name</th>
+              <th className="text-center">Category</th>
+              <th className="text-center">
                 Price
-                <div className="flex justify-evenly items-center -ms-5">
+                <div className="flex justify-evenly items-center">
                   <button
                     className="sort-button text-xl text-primary"
                     onClick={() => handleSortByPrice("asc")}
@@ -87,31 +84,28 @@ const MyToys = () => {
                   </button>
                 </div>
               </th>
-              <th>Quantity</th>
-              <th></th>
-              <th></th>
+              <th className="text-center">Quantity</th>
+              <th className="text-center">Update</th>
+              <th className="text-center">Remove</th>
             </tr>
           </thead>
           <tbody>
             {toys.map((toy, index) => (
               <tr key={toy._id}>
-                <th>{index + 1}</th>
-                <td>{toy.name}</td>
-                <td>{toy.category}</td>
-                <td>{toy.subCategory}</td>
-                <td>{toy.price}</td>
-                <td>{toy.quantity}</td>
-                <td>
-                  {/* The button to open modal */}
-                  <label htmlFor="my-modal-6" className="btn btn-accent">
+                <td className="text-center">{index + 1}</td>
+                <td className="text-center">{toy.name}</td>
+                <td className="text-center">{toy.category}</td>
+                <td className="text-center">{toy.price}</td>
+                <td className="text-center">{toy.quantity}</td>
+                <td className="text-center">
+                  <Link to={`/update-toy/${toy._id}`} className="my-btn">
                     Edit
-                  </label>
-                  <button></button>
+                  </Link>
                 </td>
-                <td>
+                <td className="text-center">
                   <button
                     onClick={() => handleDelete(toy._id)}
-                    className="btn btn-error"
+                    className="my-btn"
                   >
                     Delete
                   </button>
