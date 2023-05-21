@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
+
 const AboutUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -9,8 +10,9 @@ const AboutUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // Perform form submission logic here
-    // console.log(name, email, message);
+    // ...
 
     Swal.fire({
       title: "Message submitted successfully",
@@ -24,29 +26,28 @@ const AboutUs = () => {
     setEmail("");
     setMessage("");
   };
+
   AOS.init();
+
   return (
     <>
       <div className="hero min-h-screen bg-base-200">
         <div>
-          <h1 className="text-3xl font-bold text-center  mt-5">About Us</h1>
+          <h1 className="text-3xl font-bold text-center mt-5">About Us</h1>
           <hr className="w-48 h-1 mx-auto border-0 rounded mt-3 mb-8 bg-primary" />
           <div className="hero-content flex-col lg:flex-row">
-            <div className="lg:w-1/2 space-y-5 p-4 ">
+            <div className="lg:w-1/2 space-y-5 p-4">
               <div data-aos="fade-right" className="text-center">
                 <h1 className="text-5xl font-bold">
-                  We Bring Years of Experience and Expertise to the Toy
-                  Marketplace
+                  We Bring Years of Experience and Expertise to the Toy Marketplace
                 </h1>
                 <p className="py-6">
-                  Join us at Play Go and embark on a delightful journey of play
-                  and discovery. Explore our vast selection, engage with fellow
-                  toy enthusiasts, and bring smiles to the faces of loved ones
-                  with the perfect toys.
+                  Join us at Play Go and embark on a delightful journey of play and discovery.
+                  Explore our vast selection, engage with fellow toy enthusiasts, and bring smiles
+                  to the faces of loved ones with the perfect toys.
                 </p>
                 <p className="py-6">
-                  Thank you for choosing Play GO as your go-to destination for
-                  all things toys!
+                  Thank you for choosing Play GO as your go-to destination for all things toys!
                 </p>
                 {/* The button to open modal */}
                 <label htmlFor="my-modal-6" className="btn btn-secondary">
@@ -64,10 +65,12 @@ const AboutUs = () => {
                 <img
                   src="https://i.ibb.co/VL4sX7G/pexels-ashutosh-sonwani-1720957.jpg"
                   className="w-3/4 rounded-lg shadow-2xl"
+                  alt="About Us"
                 />
                 <img
                   src="https://i.ibb.co/ZccbdXG/pexels-yan-krukau-8612932.jpg"
                   className="w-1/2 absolute right-5 top-1/2 rounded-lg border-8 border-white shadow-2xl"
+                  alt="About Us"
                 />
               </div>
             </div>
@@ -90,19 +93,13 @@ const AboutUs = () => {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </label>
           <div className="text-center">
             <h3 className="font-bold text-lg text-accent">Contact Us</h3>
             <p className="py-4">
-              We would love to hear from you. Please feel free to reach out to
-              us.
+              We would love to hear from you. Please feel free to reach out to us.
             </p>
           </div>
           <form onSubmit={handleSubmit}>
