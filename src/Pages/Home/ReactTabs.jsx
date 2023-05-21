@@ -15,7 +15,7 @@ const ReactTabs = () => {
   const [category, setCategory] = useState("Toy Cars");
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://toys-market-place-server-one.vercel.app/categories")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -23,7 +23,7 @@ const ReactTabs = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${category}`)
+    fetch(`https://toys-market-place-server-one.vercel.app/toys/${category}`)
       .then((response) => response.json())
       .then((data) => {
         setToys(data);

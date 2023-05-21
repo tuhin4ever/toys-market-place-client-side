@@ -1,23 +1,30 @@
 import React, { useEffect } from "react";
-
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 
 const Main = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    document.documentElement.scrollTo({
-      top: 0,
-      left: 0,
-    });
-  }, []);
+    const handleScroll = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleScroll);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleScroll);
+    };
+  }, [location.pathname]);
+
   return (
     <div>
-      <Header></Header>
+      <Header />
       <div className="min-h-[calc(100vh-88px)]">
-        <Outlet></Outlet>
+        <Outlet />
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

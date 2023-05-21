@@ -33,7 +33,7 @@ useTitle("All Toys");
     if (showDefault) {
       // Fetch default toys
       setLoading(true);
-      fetch("http://localhost:5000/toys")
+      fetch("https://toys-market-place-server-one.vercel.app/toys")
         .then((response) => response.json())
         .then((data) => {
           setToys(data);
@@ -58,7 +58,7 @@ useTitle("All Toys");
     }
 
     setLoading(true);
-    fetch(`http://localhost:5000/toys?searchTerm=${searchTerm}`)
+    fetch(`https://toys-market-place-server-one.vercel.app/toys?searchTerm=${searchTerm}`)
       .then((response) => response.json())
       .then((data) => {
         setToys(data);

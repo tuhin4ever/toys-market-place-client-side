@@ -13,7 +13,7 @@ const UpdateDetails = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/updateDetails/${toy._id}`, {
+    fetch(`https://toys-market-place-server-one.vercel.app/updateDetails/${toy._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

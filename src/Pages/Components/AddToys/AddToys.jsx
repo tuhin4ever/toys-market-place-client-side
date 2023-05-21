@@ -23,7 +23,7 @@ const AddToys = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://localhost:5000/toys", {
+      const response = await fetch("https://toys-market-place-server-one.vercel.app/toys", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

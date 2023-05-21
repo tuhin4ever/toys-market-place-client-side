@@ -21,7 +21,7 @@ const GallerySection = () => {
   const totalPhotoCount = 12;
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toys-market-place-server-one.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setImages(data);
