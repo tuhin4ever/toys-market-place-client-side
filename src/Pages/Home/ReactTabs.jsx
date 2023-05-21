@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { FaDollarSign } from "react-icons/fa";
+import { FaAngleRight, FaDollarSign } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
@@ -79,9 +79,9 @@ const ReactTabs = () => {
                         Price: {toy.price}
                         <FaDollarSign className="text-green-500 ml-1" />
                       </p>
-                      <Link to={`/reactTabsDetails${toy._id}`}>
-                        <button className="my-btn">View Details</button>
-                      </Link>
+                      <Link to={`/toys/${toy._id}`} className="my-btn">
+                          View <FaAngleRight className="ml-2" />
+                        </Link>
                     </div>
                   </div>
                 </div>

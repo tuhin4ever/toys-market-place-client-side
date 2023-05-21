@@ -57,13 +57,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute><UpdateDetails></UpdateDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`https://toys-market-place-server-one.vercel.app/toysDetails/${params.id}`),
       },
-      // {
-      //   path: "reactTabsDetails/:id",
-      //   element: <PrivateRoute><ReactTabsDetails></ReactTabsDetails></PrivateRoute>,
-      //   loader: ({ params }) => fetch(`https://toys-market-place-server-one.vercel.app/viewDetails/${params.id}`),
-
-
-      // }
+      
     ],
   },
 ]);

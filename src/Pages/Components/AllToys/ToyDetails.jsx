@@ -6,6 +6,7 @@ import "@smastrom/react-rating/style.css";
 const ToyDetails = () => {
   const toy = useLoaderData();
   // console.log(toy);
+  window.scrollTo(0, 0);
   const {
     name,
     picture_url,
