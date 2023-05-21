@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import { Link } from "react-router-dom";
-import { FaDollarSign } from "react-icons/fa";
+import { FaAngleRight, FaDollarSign } from "react-icons/fa";
 const Spinner = () => {
   return (
     <div className="flex justify-center items-center h-64">
@@ -137,7 +137,7 @@ const AllToys = () => {
                     </td>
                     <td className="border px-4 py-2 text-center">
                       <Link to={`/toys/${toy._id}`} className="my-btn">
-                        View »
+                        View <FaAngleRight className="ml-2" />
                       </Link>
                     </td>
                   </tr>
@@ -161,22 +161,24 @@ const AllToys = () => {
                         className="w-24 rounded-xl mx-auto h-16 object-cover"
                       />
                     </td>
-                    <td className="border px-4 py-2">{toy.name}</td>
+                    <td className="border px-4 py-2 text-center">{toy.postedBy}</td>
                     <td className="border px-4 py-2 text-center">
-                      {toy.postedBy}
+                      {toy.name}
                     </td>
                     <td className="border px-4 py-2 text-center">
-                      {toy.price} $
+                      <p className="flex items-center justify-center">
+                        {toy.price} <FaDollarSign className="text-green-500" />
+                      </p>
                     </td>
                     <td className="border px-4 py-2 text-center">
                       {toy.quantity}
                     </td>
                     <td className="border px-4 py-2 text-center">
-                      {toy.quantity}
+                      {toy.category}
                     </td>
                     <td className="border px-4 py-2 text-center">
                       <Link to={`/toys/${toy._id}`} className="my-btn">
-                        View »
+                        View <FaAngleRight className="ml-2" />
                       </Link>
                     </td>
                   </tr>
