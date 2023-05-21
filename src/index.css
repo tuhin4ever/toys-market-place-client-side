@@ -4,7 +4,7 @@
 
 
 .active {
-  @apply font-medium tracking-wide text-secondary transition-colors duration-200 hover:text-warning;
+  @apply font-medium tracking-wide text-secondary transition-colors duration-200 hover:text-accent;
 }
 .my-btn {
     @apply btn glass text-secondary hover:bg-primary btn-sm hover:text-white transition duration-300 ease-in-out;
