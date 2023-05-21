@@ -97,95 +97,103 @@ const AllToys = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <table className="table-auto w-full">
-            <thead>
-              <tr>
-                <th className="px-4 py-2">Image</th>
-                <th className="px-4 py-2">Seller</th>
-                <th className="px-4 py-2">Toy Name</th>
-                <th className="px-4 py-2">Price</th>
-                <th className="px-4 py-2">Available Quantity</th>
-                <th className="px-4 py-2">Category</th>
-                <th className="px-4 py-2">Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {showDefault ? (
-                currentToys.map((toy) => (
-                  <tr key={toy._id}>
-                    <td className="border py-2">
-                      <img
-                        src={toy.picture_url}
-                        alt={toy.name}
-                        className="w-24 rounded-xl mx-auto h-16 object-cover"
-                      />
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.postedBy}
-                    </td>
-                    <td className="border px-4 py-2 text-center">{toy.name}</td>
-                    <td className="border px-4 py-2 text-center">
-                      <p className="flex items-center justify-center">
-                        {toy.price} <FaDollarSign className="text-green-500" />
-                      </p>
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.quantity}
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.category}
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      <Link to={`/toys/${toy._id}`} className="my-btn">
-                        View <FaAngleRight className="ml-2" />
-                      </Link>
-                    </td>
-                  </tr>
-                ))
-              ) : toys.length === 0 ? (
+          <div className="overflow-x-auto">
+            <table className="table-auto w-full">
+              <thead>
                 <tr>
-                  <td
-                    className="px-4 py-10 text-center text-primary font-bold"
-                    colSpan="7"
-                  >
-                    No toys found for the search term....🔎
-                  </td>
+                  <th className="px-4 py-2">Image</th>
+                  <th className="px-4 py-2">Seller</th>
+                  <th className="px-4 py-2">Toy Name</th>
+                  <th className="px-4 py-2">Price</th>
+                  <th className="px-4 py-2">Available Quantity</th>
+                  <th className="px-4 py-2">Category</th>
+                  <th className="px-4 py-2">Details</th>
                 </tr>
-              ) : (
-                currentToys.map((toy) => (
-                  <tr key={toy._id}>
-                    <td className="border px-4 py-2">
-                      <img
-                        src={toy.picture_url}
-                        alt={toy.name}
-                        className="w-24 rounded-xl mx-auto h-16 object-cover"
-                      />
-                    </td>
-                    <td className="border px-4 py-2 text-center">{toy.postedBy}</td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.name}
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      <p className="flex items-center justify-center">
-                        {toy.price} <FaDollarSign className="text-green-500" />
-                      </p>
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.quantity}
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      {toy.category}
-                    </td>
-                    <td className="border px-4 py-2 text-center">
-                      <Link to={`/toys/${toy._id}`} className="my-btn">
-                        View <FaAngleRight className="ml-2" />
-                      </Link>
+              </thead>
+              <tbody>
+                {showDefault ? (
+                  currentToys.map((toy) => (
+                    <tr key={toy._id}>
+                      <td className="border py-2">
+                        <img
+                          src={toy.picture_url}
+                          alt={toy.name}
+                          className="w-24 rounded-xl mx-auto h-16 object-cover"
+                        />
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.postedBy}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.name}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        <p className="flex items-center justify-center">
+                          {toy.price}{" "}
+                          <FaDollarSign className="text-green-500" />
+                        </p>
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.quantity}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.category}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        <Link to={`/toys/${toy._id}`} className="my-btn">
+                          View <FaAngleRight className="ml-2" />
+                        </Link>
+                      </td>
+                    </tr>
+                  ))
+                ) : toys.length === 0 ? (
+                  <tr>
+                    <td
+                      className="px-4 py-10 text-center text-primary font-bold"
+                      colSpan="7"
+                    >
+                      No toys found for the search term....🔎
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                ) : (
+                  currentToys.map((toy) => (
+                    <tr key={toy._id}>
+                      <td className="border px-4 py-2">
+                        <img
+                          src={toy.picture_url}
+                          alt={toy.name}
+                          className="w-24 rounded-xl mx-auto h-16 object-cover"
+                        />
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.postedBy}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.name}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        <p className="flex items-center justify-center">
+                          {toy.price}{" "}
+                          <FaDollarSign className="text-green-500" />
+                        </p>
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.quantity}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        {toy.category}
+                      </td>
+                      <td className="border px-4 py-2 text-center">
+                        <Link to={`/toys/${toy._id}`} className="my-btn">
+                          View <FaAngleRight className="ml-2" />
+                        </Link>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         )}
 
         {/* Pagination */}

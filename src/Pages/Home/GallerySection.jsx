@@ -33,10 +33,6 @@ const GallerySection = () => {
     setShowAll(true);
   };
 
-  const handleShowLess = () => {
-    setShowAll(false);
-  };
-
   const displayedImages = showAll
     ? images.slice(0, totalPhotoCount)
     : images.slice(0, defaultPhotoCount);
@@ -82,14 +78,7 @@ const GallerySection = () => {
         {!showAll && images.length > defaultPhotoCount && (
           <div className="flex justify-center mt-4">
             <button className="my-btn" onClick={handleShowAll}>
-              Show More
-            </button>
-          </div>
-        )}
-        {showAll && images.length > defaultPhotoCount && (
-          <div className="flex justify-center mt-4">
-            <button className="my-btn" onClick={handleShowLess}>
-              Show Less
+              Show All
             </button>
           </div>
         )}

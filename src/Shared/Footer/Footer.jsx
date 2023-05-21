@@ -2,7 +2,7 @@ import React from "react";
 import { MdToys } from "react-icons/md";
 const Footer = () => {
   return (
-    <div>
+    <div className="my-content">
       <footer className="footer p-10 bg-base-200 text-base-content">
         <div>
           <MdToys className="w-28 h-16 text-primary"></MdToys>
