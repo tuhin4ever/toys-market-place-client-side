@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
+import useTitle from "../../Hooks/useTitle";
 
 const AboutUs = () => {
+
+  useTitle("About Us");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -29,6 +32,8 @@ const AboutUs = () => {
 
   AOS.init();
 
+
+  
   return (
     <>
       <div className="hero min-h-screen bg-base-200">

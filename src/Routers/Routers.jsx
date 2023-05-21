@@ -10,11 +10,14 @@ import AddToys from "../Pages/Components/AddToys/AddToys";
 import PrivateRoute from "./PrivateRoute";
 import UpdateDetails from "../Pages/Components/MyToys/UpdateDetails";
 import ToyDetails from "../Pages/Components/AllToys/ToyDetails";
+import ReactTabsDetails from "../Pages/Home/ReactTabsDetails";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -53,7 +56,14 @@ const router = createBrowserRouter([
         path: 'update-toy/:id',
         element: <PrivateRoute><UpdateDetails></UpdateDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/toysDetails/${params.id}`),
-      }
+      },
+      // {
+      //   path: "reactTabsDetails/:id",
+      //   element: <PrivateRoute><ReactTabsDetails></ReactTabsDetails></PrivateRoute>,
+      //   loader: ({ params }) => fetch(`http://localhost:5000/viewDetails/${params.id}`),
+
+
+      // }
     ],
   },
 ]);

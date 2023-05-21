@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import AOS from "aos";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const AddToys = () => {
+  useTitle("Add Toys");
+
   AOS.init();
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
@@ -103,15 +106,23 @@ const AddToys = () => {
             <option value="Dolls">Dolls</option>
             <option value="Girls">Girls</option>
             <option value="Video Game Toys">Video Game Toys</option>
-            <option value="Building And Construction Toys">Building And Construction Toys</option>
-            <option value="Educational and Learning Toys">Educational and Learning Toys</option>
+            <option value="Building And Construction Toys">
+              Building And Construction Toys
+            </option>
+            <option value="Educational and Learning Toys">
+              Educational and Learning Toys
+            </option>
             <option value="Cooking Toys">Cooking Toys</option>
             <option value="Arts and Crafts Toys">Arts and Crafts Toys</option>
             <option value="Musical Toys">Musical Toys</option>
-            <option value="Board Games and Puzzles">Board Games and Puzzles</option>
+            <option value="Board Games and Puzzles">
+              Board Games and Puzzles
+            </option>
             <option value="Electronic Toys">Electronic Toys</option>
             <option value="Lego sets">Lego sets</option>
-            <option value="Sand castle building toys">Sand Castle Building Toys</option>
+            <option value="Sand castle building toys">
+              Sand Castle Building Toys
+            </option>
             <option value="Other Types Of Toys">Other Types Of Toys</option>
           </select>
         </div>

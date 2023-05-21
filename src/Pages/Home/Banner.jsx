@@ -1,4 +1,6 @@
 import Marquee from "react-fast-marquee";
+import { Link } from "react-router-dom";
+
 const Banner = () => {
   return (
     <div className="carousel w-full  h-[700px]">
@@ -20,7 +22,9 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn my-btn mr-5">Discover Toy's</button>
+              <Link to="/error" className="btn my-btn mr-5">
+                Discover Toy's
+              </Link>
             </div>
           </div>
         </div>
@@ -57,7 +61,9 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn my-btn mr-5">Discover Toy's</button>
+              <Link to="/error" className="btn my-btn mr-5">
+                Discover Toy's
+              </Link>
             </div>
           </div>
         </div>
@@ -92,7 +98,9 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn my-btn mr-5">Discover Toy's</button>
+              <Link to="/error" className="btn my-btn mr-5">
+                Discover Toy's
+              </Link>
             </div>
           </div>
         </div>
@@ -129,7 +137,9 @@ const Banner = () => {
               </span>
             </Marquee>
             <div className="text-center">
-              <button className="btn my-btn mr-5">Discover Toy's</button>
+              <Link to="/error" className="btn my-btn mr-5">
+                Discover Toy's
+              </Link>
             </div>
           </div>
         </div>

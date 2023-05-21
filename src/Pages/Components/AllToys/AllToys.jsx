@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import { Link } from "react-router-dom";
 import { FaAngleRight, FaDollarSign } from "react-icons/fa";
+import useTitle from "../../../Hooks/useTitle";
+
+
+
+
 const Spinner = () => {
   return (
     <div className="flex justify-center items-center h-64">
@@ -11,6 +16,10 @@ const Spinner = () => {
 };
 
 const AllToys = () => {
+
+useTitle("All Toys");
+
+
   AOS.init();
 
   const [toys, setToys] = useState([]);

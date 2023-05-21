@@ -6,12 +6,13 @@ import "@smastrom/react-rating/style.css";
 import { FaDollarSign } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const ReactTabs = () => {
   AOS.init();
   const [categories, setCategories] = useState([]);
   const [toys, setToys] = useState([]);
-  const [category, setCategory] = useState("SportsCar");
+  const [category, setCategory] = useState("Toy Cars");
 
   useEffect(() => {
     fetch("http://localhost:5000/categories")
@@ -26,6 +27,7 @@ const ReactTabs = () => {
       .then((response) => response.json())
       .then((data) => {
         setToys(data);
+        console.log(data);
       });
   }, [category]);
 
@@ -47,9 +49,17 @@ const ReactTabs = () => {
             </h2>
             <div className="flex flex-wrap justify-center">
               {toys.slice(0, 3).map((toy, index) => (
-                <div key={index} className="card bg-white shadow-lg rounded-lg w-80 mx-4 my-6 overflow-hidden">
+              
+                <div
+                  key={index}
+                  className="card bg-white shadow-lg rounded-lg w-80 mx-4 my-6 overflow-hidden"
+                >
                   <div className="relative">
-                    <img className="w-full h-48 object-cover" src={toy.picture_url} alt={toy.name} />
+                    <img
+                      className="w-full h-48 object-cover"
+                      src={toy.picture_url}
+                      alt={toy.name}
+                    />
                     <div className="absolute top-2 right-2 rounded-full bg-secondary text-white px-3 py-1">
                       {toy.rating}
                     </div>
@@ -69,7 +79,9 @@ const ReactTabs = () => {
                         Price: {toy.price}
                         <FaDollarSign className="text-green-500 ml-1" />
                       </p>
-                      <button className="my-btn">View Details</button>
+                      <Link to={`/reactTabsDetails${toy._id}`}>
+                        <button className="my-btn">View Details</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
