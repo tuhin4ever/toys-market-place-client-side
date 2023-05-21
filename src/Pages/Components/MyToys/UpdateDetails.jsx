@@ -2,10 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const UpdateDetails = () => {
   const toy = useLoaderData();
-console.log(toy)
+  console.log(toy);
   const {
     register,
     handleSubmit,
@@ -37,11 +37,15 @@ console.log(toy)
   return (
     <div className="flex justify-center items-center h-screen relative">
       <div className="absolute top-0 left-0 w-full h-full z-0">
-        <img
-          src={toy.picture_url}
+        <LazyLoadImage
           alt="Background"
           className="w-full h-full object-cover"
+          loading="lazy"
+          width="100%"
+          height="100%"
+          src={toy.picture_url}
         />
+
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
       </div>
       <div className="bg-opacity-80 p-6 rounded relative z-10">
@@ -78,7 +82,11 @@ console.log(toy)
           {/* errors will return when field validation fails  */}
           {errors.exampleRequired && <span>This field is required</span>}
 
-          <input value="Update" className="btn btn-accent text-white font-bold mt-5" type="submit" />
+          <input
+            value="Update"
+            className="btn btn-accent text-white font-bold mt-5"
+            type="submit"
+          />
         </form>
       </div>
     </div>
