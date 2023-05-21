@@ -33,3 +33,4 @@ Github Repo -> [Server-Side](https://github.com/programming-hero-web-course-4/b7
 ## Live Link
 
 Hosted in Firebase:(https://play-go-toys.web.app)
+Hosted in vercel:(https://play-go-toys.herokuapp.com)
